@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"> -->
+    <script src="https://kit.fontawesome.com/30a4efbd05.js" crossorigin="anonymous"></script>
+    <script src="jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <link rel="shortcut icon"  href="images/ss_favicon_jpg.ico">
+    <style>
+        *:focus {
+        outline: none;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            font-family:'Original Surfer', cursive;
+            font-weight: 300;
+            color: #555;
+            /* background-color:#ffd6d6; */
+
+        }
+        .login-box{
+            position: relative;
+            margin: 6% auto;
+            width: 90%;
+            height: 70%;
+            background:	transparent;
+            border-radius: 2px ;
+            box-shadow:0 6px 15px #ffd6d6 ;
+        }
+        input{
+            position:relative;
+            border: 2px solid #ffd6d6;
+            margin:0 auto;
+            font-size: 150%;/*1.4em*/
+            width:50%;
+            line-height: 1.5em;
+            font-family:'Original Surfer', cursive;
+            background-color: transparent;
+        }
+        .input{
+            position:relative;
+            text-align: center;
+            color:black;
+        }
+        input:focus{
+            border-top:white;
+            border-left: white;
+            border-right: white;
+            border-bottom: 2px solid #ff523b;
+        }
+        .btn{
+            position:relative;
+            text-decoration: none;
+            display: inline-block;
+            background: #ff523b;
+            border-color: #ff523b;
+            color: #fff;
+            padding: 8px 30px;
+            margin: 30px 0;
+            border-radius: 30px;
+            transition: background 0.5s;
+        }
+        .btn:hover{
+            background: #563434;
+
+        }
+        .new,.login{
+            text-align: center;
+        }
+        .btn1{
+            position:relative;
+            text-decoration: none;
+            display: inline-block;
+            background: #ff523b;
+            border-color: #ff523b;
+            color: #fff;
+            padding: 8px 30px;
+            margin: 30px 0;
+            border-radius: 4px;
+            width: 30%;
+            transition: background 0.5s;
+            text-align: center;
+        }
+        .btn1:hover{
+            background: #563434;
+
+        }
+        a{
+            text-decoration: none;
+            
+        }
+        .link:visited{
+            color:blue;
+        }
+        .link:hover{
+            color:red;
+        }
+        .forgot{
+            text-align: center;
+        }
+        .pass{
+            color:#555;
+        }
+        .pass:hover{
+            color:#066f90;
+        }
+        .cross{
+            position:absolute;
+            color:hsl(0, 100%, 92%);
+            margin: 4% 0% 0% 90%;
+            font-size: x-large;    
+        }
+
+    </style>
+</head>
+<body>
+    <form name="form" action="#">
+    <div class="login-box">
+
+        <span >
+            <a href="index.html" class="cross"><i class="fas fa-times"></i></a>
+        </span>
+
+
+        <h1 style="text-align: center; color:#555" class="h1">Login </h1>
+
+        <br><br>
+
+        <div class="input">              
+            <input id="text" type="text" name="email" placeholder="E-mail" required/><br><br>
+            <div class="con">
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <br>
+                <br>
+
+                <i class="far fa-eye" id="togglePassword" style="color:orange"></i>&nbsp<span class="eye-icon" style="color:#555">(SHOWPASSWORD)</span>
+            </div>
+        </div>
+        <br>
+
+            <div class="forgot">
+               <b>--> <a href="#" class="pass">Forgot Password?</a> <--</b>
+            </div>
+
+            <br>
+            <div class="new">By continuing, you agree to site <a class="link" href="terms.html">Terms of use</a> and <a class="link" href="policy.html">privacy policy</a>.</div>
+
+
+            <div class="login">
+            <a class="btn" onclick="ValidateEmail(document.form.email)">Login</a>
+            </div>
+
+            <div class="new">New to site?</div>
+
+            <div class="new">
+                <a href="signup.html" class="btn1">Create Account</a>
+            </div>
+        </div>
+
+    </form>
+
+    <script>
+        
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+        });
+
+        
+        $("#togglePassword").click(function() { 
+            if ($(".eye-icon").text() == "(SHOWPASSWORD)") { 
+                $(".eye-icon").text("(HIDEPASSWORD)"); 
+            } else { 
+                $(".eye-icon").text("(SHOWPASSWORD)"); 
+            }; 
+        });
+
+        function ValidateEmail(inputText)
+        {
+        var mailformat =  /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9]+).([a-z]+)(.[a-z]+)?$/   ///^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+        if(inputText.value.match(mailformat))
+        {
+        alert("You have entered a valid email address!");    
+        document.form.email.focus();
+        return true;
+        }
+        else
+        {
+        alert("Sorry! incorrect email ID");    
+        document.form.email.focus();
+        return false;
+        }
+        }
+    </script>
+
+        
+</body>
+</html>
